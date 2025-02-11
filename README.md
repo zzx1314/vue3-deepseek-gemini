@@ -2,7 +2,7 @@
 
 ## 描述
 
-基于 Vue 3 部署 DeepSeek 和 Google Gemini 2.0，支持代码高亮显示，并针对移动端进行了简洁适配。
+基于 Vue 3 部署 `DeepSeek` 和 `Google Gemini 2.0`  api集成的`Web AI`对话框，抖音风格，支持代码高亮显示，并针对移动端进行了简洁适配。
 
 ## 使用方法
 
@@ -47,6 +47,10 @@
         ```
 
     *   部署构建后的文件到你的服务器。
+
+## 在线预览
+
+访问 [https://euzhi.com/](https://euzhi.com/) 在线查看。
 
 ## 环境说明
 
