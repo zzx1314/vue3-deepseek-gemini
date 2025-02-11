@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>调用 Gemini API 示例 (前端直连 - **不安全!**)</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* 更换字体，可以使用你喜欢的字体 */
+            margin: 0; /* 去除 body 默认 margin */
+            background-color: #f4f7f6; /* 浅灰色背景 */
+            color: #333; /* 深灰色文本颜色 */
+            display: flex; /* 使用 Flexbox 布局 */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            min-height: 100vh; /* 确保内容至少占满整个视口高度 */
+        }
+        .container {
+            max-width: 800px;
+            padding: 30px;
+            background-color: #fff; /* 白色容器背景 */
+            border-radius: 10px; /* 圆角 */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+            text-align: center; /* 容器内文本居中 */
+        }
+        h1 {
+            color: #3498db; /* 蓝色标题颜色 */
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #2c3e50; /* 深蓝色副标题颜色 */
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555; /* 标签颜色 */
+            text-align: left; /* 标签文本左对齐 */
+        }
+        textarea {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            border: 1px solid #ccc; /* 边框 */
+            border-radius: 5px; /* 圆角 */
+            font-size: 16px;
+            resize: vertical; /* 允许垂直方向调整大小 */
+        }
+        textarea:focus {
+            outline: none; /* 去除默认 focus 轮廓线 */
+            border-color: #3498db; /* 焦点状态边框颜色 */
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* 焦点状态阴影 */
+        }
+        button {
+            padding: 12px 25px;
+            background-color: #3498db; /* 蓝色按钮背景 */
+            color: white;
+            border: none;
+            border-radius: 5px; /* 圆角 */
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease; /* 添加过渡效果 */
+        }
+        button:hover {
+            background-color: #2980b9; /* 鼠标悬停时按钮颜色 */
+        }
+        button:focus {
+            outline: none; /* 去除按钮 focus 轮廓线 */
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.7); /* 按钮焦点状态阴影 */
+        }
+        #response {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd; /* 更淡的边框 */
+            border-radius: 5px; /* 圆角 */
+            background-color: #f9f9f9; /* 浅灰色响应区域背景 */
+            white-space: pre-wrap;
+            font-family: monospace;
+            text-align: left; /* 响应文本左对齐 */
+            min-height: 80px; /* 最小高度 */
+        }
+        .warning {
+            color: #e74c3c; /* 红色警告颜色 */
+            font-weight: bold;
+            margin-bottom: 20px;
+            background-color: #fdeded; /* 警告背景色 */
+            padding: 15px;
+            border: 1px solid #e74c3c;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="warning">警告：此示例直接在前端调用 Gemini API，API 密钥会暴露在前端代码中，非常不安全！请勿在生产环境中使用！</h1>
+        <h1>调用 Gemini API 示例 (前端直连 - **不安全!**)</h1>
+
+        <div>
+            <label for="prompt">请输入 Prompt:</label><br>
+            <textarea id="prompt" placeholder="请输入你想发送给 Gemini API 的 Prompt"></textarea>
+        </div>
+
+        <button id="generateButton">生成文本 (调用 Gemini API - **不安全!**)</button>
+
+        <h2>Gemini API 响应:</h2>
+        <div id="response">
+            <p>响应结果将显示在这里...</p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript 代码部分保持不变，与之前的代码一致
+        const API_KEY = 'AIzaSyB-CzEN-WnmEwSCM7PRkSBFw_2Qg76YN0s'; // **极其不安全！请替换为你的 Gemini API 密钥，并仅用于本地测试！**
+        const API_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + API_KEY; //  Gemini Pro generateContent API 端点 (包含 API 密钥 - 不安全!)
+
+        document.getElementById('generateButton').addEventListener('click', () => {
+            const promptText = document.getElementById('prompt').value;
+
+            if (!promptText) {
+                alert("请输入 Prompt!");
+                return;
+            }
+
+            fetch(API_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{ text: promptText }]
+                    }]
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP 错误! 状态码: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Gemini API 响应:", data);
+                displayResponse(data);
+            })
+            .catch(error => {
+                console.error("调用 Gemini API 失败:", error);
+                displayError(`调用 Gemini API 失败: ${error.message}`);
+            });
+        });
+
+        function displayResponse(data) {
+            const responseDiv = document.getElementById('response');
+            if (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0].text) {
+                responseDiv.textContent = data.candidates[0].content.parts[0].text;
+            } else {
+                responseDiv.textContent = "未收到有效的 Gemini API 响应。请检查控制台日志。";
+            }
+        }
+
+        function displayError(errorMessage) {
+            const responseDiv = document.getElementById('response');
+            responseDiv.textContent = errorMessage;
+        }
+
+    </script>
+</body>
+</html>
