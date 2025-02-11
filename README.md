@@ -12,7 +12,7 @@
 
     **注意：** Google Gemini 2.0 需要科学上网才能正常使用。
 
-    具体来说，你需要修改 `src/config/index.js` (或者你的 config 文件名):
+    具体来说，你需要修改 `src/config/deepseek.js` 或者 `src/config/gemini.js` （看你需求具体需要使用那种模型）:
 
     ```javascript
     // src/config/index.js
@@ -34,6 +34,12 @@
         npm install  # 或者使用 yarn install / pnpm install
         ```
 
+    *   启动项目：
+
+        ```bash
+        npm run dev
+        ```
+
     *   构建项目：
 
         ```bash
@@ -49,7 +55,7 @@
 
 ## 其他说明
 
-如果项目有其他运行/配置上的注意事项，请在这里添加。
+如果对你有帮助给我点一个star吧，谢谢！
 
 ## 贡献
 
