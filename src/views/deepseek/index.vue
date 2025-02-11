@@ -10,7 +10,7 @@
       </div>
       <div class="grid-space-between" :class="!isMobile ? 'grid-box' : ''">
         <div class="left-container" v-if="!isMobile">
-          <el-button type="primary" style="width: 100%;font-size: 15px;font-weight: bold;" :icon="Plus"
+          <el-button type="primary" class="add-btn" :icon="Plus"
             size="large" @click="handleAddSession">新建对话</el-button>
           <div class="session-area">
             <div class="session-item" :class="activeIndex == index ? 'session-item-active' : ''"

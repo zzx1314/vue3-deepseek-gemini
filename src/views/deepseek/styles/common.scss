@@ -6,6 +6,12 @@
   align-items: center;
   background: #000;
 
+  .add-btn {
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
   .page {
     width: 94vw;
     height: 94vh;
@@ -164,29 +170,29 @@
 }
 
 // 按钮样式
-    :deep(.el-button) {
-      border-radius: 8px;
-      transition: all 0.3s ease;
+:deep(.el-button) {
+  border-radius: 8px;
+  transition: all 0.3s ease;
 
-      &:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 0 12px rgba(254, 44, 85, 0.5);
-      }
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 12px rgba(254, 44, 85, 0.5);
+  }
 
-      &:active {
-        transform: translateY(1px);
-      }
+  &:active {
+    transform: translateY(1px);
+  }
 
-      .el-icon {
-        font-size: 18px;
-        margin-right: 4px;
-      }
+  .el-icon {
+    font-size: 18px;
+    margin-right: 4px;
+  }
 
-      &.is-disabled {
-        background-color: rgba(254, 44, 85, 0.6);
-        border-color: rgba(254, 44, 85, 0.6);
-      }
-    }
+  &.is-disabled {
+    background-color: rgba(254, 44, 85, 0.6);
+    border-color: rgba(254, 44, 85, 0.6);
+  }
+}
 
 // 输入框样式
 :deep(.el-input__wrapper),
