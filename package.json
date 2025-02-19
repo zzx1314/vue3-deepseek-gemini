@@ -1,8 +1,11 @@
 {
-  "name": "vite_vue3_empty_project",
+  "name": "vite_vue3_deepseek_gemini_project",
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "description": "Vue3 Vite Deepseek Gemini Project",
+  "homepage":"https://euzhi.com/",
+  "keywords":["element-plus","vue3","vite","deepseek","vue3-markdown-it","markdown-it","highlight.js","openai","gemini"],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
