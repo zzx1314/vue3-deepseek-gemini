@@ -3,10 +3,10 @@
     <div class="page">
       <div class="tips">
         <div class="title">{{queryInfos.model}}</div>
-        <div class="desc" v-if="!isMobile">
+<!--        <div class="desc" v-if="!isMobile">
           本网站采用本地缓存模式运行，不会留存任何涉及您个人的信息数据，请放心使用。
         </div>
-        <div @click="handleClearStorage" v-else class="pointer">清空</div>
+        <div @click="handleClearStorage" v-else class="pointer">清空</div>-->
       </div>
       <div class="grid-space-between" :class="!isMobile ? 'grid-box' : ''">
         <div class="left-container" v-if="!isMobile">

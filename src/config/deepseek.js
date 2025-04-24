@@ -2,7 +2,7 @@
 // API配置
 export const API_CONFIG = {
     baseURL: "https://api.deepseek.com",
-    apiKey: "1112211", // 换成自己的apiKey
+    apiKey: "sk-b2a90db3d0fd4b029ce065978e68ce64", // 换成自己的apiKey
     dangerouslyAllowBrowser: true
 };
 

@@ -4,8 +4,18 @@
   "version": "0.0.1",
   "type": "module",
   "description": "Vue3 Vite Deepseek Gemini Project",
-  "homepage":"https://euzhi.com/",
-  "keywords":["element-plus","vue3","vite","deepseek","vue3-markdown-it","markdown-it","highlight.js","openai","gemini"],
+  "homepage": "https://euzhi.com/",
+  "keywords": [
+    "element-plus",
+    "vue3",
+    "vite",
+    "deepseek",
+    "vue3-markdown-it",
+    "markdown-it",
+    "highlight.js",
+    "openai",
+    "gemini"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -19,6 +29,7 @@
     "markdown-it": "^14.1.0",
     "markdown-it-code-copy": "^0.2.1",
     "markdown-it-highlightjs": "^4.2.0",
+    "md-editor-v3": "^5.5.0",
     "mobile-detect": "^1.4.5",
     "openai": "^4.77.0",
     "sass": "^1.83.0",

@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #000;
+  background: #ffffff;
 
   .add-btn {
     width: 100%;
@@ -15,7 +15,7 @@
   .page {
     width: 94vw;
     height: 94vh;
-    background: #1f1f1f;
+    background: #ffffff;
     box-shadow: 0 0 20px rgba(254, 44, 85, 0.15);
     box-sizing: border-box;
     border-radius: 12px;
@@ -56,7 +56,7 @@
     }
 
     .left-container {
-      background-color: #2f2f2f;
+      background-color: #ffffff;
       padding: 16px;
       border-radius: 8px;
       height: calc(94vh - 40px - 32px);
@@ -133,7 +133,7 @@
     .container {
       width: 100%;
       height: calc(94vh - 40px);
-      background: #1f1f1f;
+      background: #ffffff;
       border-radius: 8px;
       padding: 16px;
       box-sizing: border-box;
@@ -199,7 +199,7 @@
 :deep(.el-select__wrapper) {
   height: 40px;
   line-height: 40px;
-  background-color: #1f1f1f;
+  background-color: #ffffff;
   border: 1px solid #fe2c55;
   box-shadow: 0 0 8px rgba(254, 44, 85, 0.3);
   border-radius: 8px;
@@ -215,7 +215,7 @@
   .el-input__inner {
     height: 40px;
     line-height: 40px;
-    color: #fff;
+    color: #1f1f1f;
     font-size: 14px;
 
     &::placeholder {
