@@ -6,8 +6,8 @@
 import { onMounted } from 'vue';
 
 onMounted(() => {
-  document.body.style.setProperty("--el-color-primary", "#fe2c55");
-  document.body.style.setProperty("--el-color-primary-light-3", "#fe2c55");
+  // document.body.style.setProperty("--el-color-primary", "#fe2c55");
+  // document.body.style.setProperty("--el-color-primary-light-3", "#fe2c55");
   document.body.style.setProperty("--el-menu-active-color", "#1777DE");
   document.body.style.setProperty("--el-color-primary-light-9", "rgba(23,119,222,.2)");
 })

@@ -308,5 +308,5 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
-@use './styles/common.scss' as *
+@use './styles/common.scss' as *;
 </style>

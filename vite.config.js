@@ -53,6 +53,9 @@ export default defineConfig({
     },
     chunkSizeWarningLimit: 2000,
   },
+  server: {
+    port: 3000,
+  }
   // server: {
   //   proxy: {
   //     "/user": {
