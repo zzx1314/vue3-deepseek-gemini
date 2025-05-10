@@ -46,13 +46,13 @@
             <el-input v-model="queryKeys" id="keyInput" placeholder="请输入内容" show-word-limit
               @keydown.enter.native="(e) => {
                 if (e.isComposing || loading) return;
-                handleRequest();
+                fetchStreamWithFetch();
               }" />
             <el-select v-model="queryInfos.model" class="model-select" @change="handleModelChange">
               <el-option label="DeepSeek" value="deepseek-chat" />
               <el-option label="Gemini" value="gemini-chat" />
             </el-select>
-            <el-button style="height: 40px" type="primary" @click="handleRequest" :disabled="!queryKeys"
+            <el-button style="height: 40px" type="primary" @click="fetchStreamWithFetch()" :disabled="!queryKeys"
               :loading="loading">
               <el-icon>
                 <Promotion />
@@ -288,6 +288,39 @@ const handleRequest = async () => {
     queryInfos.value.messages[queryInfos.value.messages.length - 1].content = error.message;
   }
 };
+
+async function fetchStreamWithFetch() {
+  queryInfos.value.messages.push({
+    role: "user",
+    content: queryKeys.value,
+    name: '小智'
+  });
+  queryKeys.value = null;
+  messageRef.value.scrollBottom();
+
+  loading.value = true;
+  queryInfos.value.messages.push({ role: "assistant", content: "" });
+  const response = await fetch('/api/ai/streamV1?question=你好');
+
+  if (response.ok && response.body) {
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      const chunk = decoder.decode(value, { stream: true });
+      console.log("chunk----", chunk);
+      queryInfos.value.messages[queryInfos.value.messages.length - 1].content += chunk;
+    }
+    messageRef.value.scrollBottom();
+    sessionList.value[activeIndex.value].messages = queryInfos.value.messages;
+    loading.value = false;
+  } else {
+    console.error('Stream failed');
+  }
+}
+
 
 // 生命周期钩子
 onMounted(async () => {
