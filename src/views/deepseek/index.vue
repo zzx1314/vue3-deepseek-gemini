@@ -299,11 +299,12 @@ async function fetchStreamWithFetch() {
     name: '小智'
   });
   messageRef.value.scrollBottom();
+  let question = queryKeys.value;
+  queryKeys.value = null;
 
   loading.value = true;
   queryInfos.value.messages.push({ role: "assistant", content: "" });
-  const response = await fetch('/api/ai/streamV1?question=' + queryKeys.value);
-  queryKeys.value = null;
+  const response = await fetch('/api/ai/streamV1?question=' + question);
 
   if (response.ok && response.body) {
     const reader = response.body.getReader();
