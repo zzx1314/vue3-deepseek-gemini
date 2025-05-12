@@ -9,9 +9,7 @@
           <div v-else></div>
           <div :class="['message-item__content', item.role === 'assistant' ? 'message-item__content--left' : 'message-item__content--right']">
             <div class="message-item__text">
-<!--              <Markdown v-loading :source="item.content || '思考中...'" />-->
               <MdPreview :id="id" :modelValue="item.content || '思考中...'" />
-<!--              <MdCatalog :editorId="id" :scrollElement="scrollElement" />-->
             </div>
           </div>
           <el-avatar class="message-item__avatar" v-if="item.role !== 'assistant'">
@@ -31,7 +29,6 @@
 
 <script setup>
 import { nextTick, ref } from 'vue';
-// import Markdown from "vue3-markdown-it";
 import { MdPreview, MdCatalog } from 'md-editor-v3';
 import 'md-editor-v3/lib/preview.css';
 

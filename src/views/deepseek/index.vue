@@ -290,17 +290,20 @@ const handleRequest = async () => {
 };
 
 async function fetchStreamWithFetch() {
+  if (!sessionList.value.length) {
+    await handleAddSession();
+  }
   queryInfos.value.messages.push({
     role: "user",
     content: queryKeys.value,
     name: '小智'
   });
-  queryKeys.value = null;
   messageRef.value.scrollBottom();
 
   loading.value = true;
   queryInfos.value.messages.push({ role: "assistant", content: "" });
-  const response = await fetch('/api/ai/streamV1?question=你好');
+  const response = await fetch('/api/ai/streamV1?question=' + queryKeys.value);
+  queryKeys.value = null;
 
   if (response.ok && response.body) {
     const reader = response.body.getReader();
