@@ -91,8 +91,7 @@ defineExpose({
   &__avatar {
     width: 36px;
     height: 36px;
-    background-color: #121212;
-    border: 2px solid #fe2c55;
+    background-color: #ffffff;
     padding: 4px;
   }
 
